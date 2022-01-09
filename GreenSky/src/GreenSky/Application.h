@@ -2,6 +2,7 @@
 #include "Core.h"
 
 #include "Events/Event.h"
+#include "Events/ApplicationEvent.h"
 
 namespace GreenSky {
 	class GREENSKY_API Application
@@ -11,6 +12,9 @@ namespace GreenSky {
 		virtual ~Application();
 
 		void Run();
+
+	private:
+		bool _running;
 	};
 
 	//To be defined in a client

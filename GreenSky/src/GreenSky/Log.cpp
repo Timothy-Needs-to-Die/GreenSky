@@ -1,5 +1,9 @@
+#include "gspch.h"
 #include "Log.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
+
+
+
 
 //Documentation for spdlog library: https://github.com/gabime/spdlog/wiki
 namespace GreenSky {
@@ -19,4 +23,3 @@ namespace GreenSky {
 		s_applicationLogger->set_level(spdlog::level::trace);
 	}
 }
-

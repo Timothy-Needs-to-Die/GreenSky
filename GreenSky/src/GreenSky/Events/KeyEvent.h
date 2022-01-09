@@ -2,44 +2,51 @@
 
 #include "Event.h"
 
-#include <sstream>
-
+//Key Events are any events related to the keyboard. All key events need to take note of the key code.
 namespace GreenSky {
 	class GREENSKY_API KeyEvent : public Event {
 	public:
-		inline int GetKeyCode() const { return m_KeyCode; }
+		//Gets the keycode
+		inline int GetKeyCode() const { return _keyCode; }
 
+		//Sets the categories for all KeyEvents
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
 		KeyEvent(int keycode)
-			: m_KeyCode(keycode) {}
-			int m_KeyCode;
+			: _keyCode(keycode) {}
+
+			//Stores the key code
+			int _keyCode;
 	};
 
+	//Pressing a key down event.
 	class GREENSKY_API KeyPressedEvent : public KeyEvent {
 	public:
-		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_RepeatCount(repeatCount) {}
+		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), _repeatCount(repeatCount) {}
 
-		inline int GetRepeatCount() const { return m_RepeatCount; }
+		inline int GetRepeatCount() const { return _repeatCount; }
 
+		//Output debug information
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << " repeats)";
+			ss << "KeyPressedEvent: " << _keyCode << " (" << _repeatCount << " repeats)";
 			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyPressed)
 	private:
-		int m_RepeatCount;
+		int _repeatCount; //Stores the amount of times the key has been held down. 
 	};
 
+	//Key released event
 	class GREENSKY_API KeyReleasedEvent : public KeyEvent {
 	public:
 		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
 
+		//Output debug information
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "KeyReleasedEvent: " << m_KeyCode;
+			ss << "KeyReleasedEvent: " << _keyCode;
 			return ss.str();
 		}
 

@@ -2,88 +2,103 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace GreenSky {
+
+	//Mouse moved event, says where the mouse currently is
 	class GREENSKY_API MouseMovedEvent : public Event {
 	public:
-		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {}
+		MouseMovedEvent(float x, float y) : _mouseX(x), _mouseY(y) {}
 
-		inline float GetX() const { return m_MouseX; }
-		inline float GetY() const { return m_MouseY; }
+		//Getters
+		inline float GetX() const { return _mouseX; }
+		inline float GetY() const { return _mouseY; }
 
+		//Output debug information
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "MouseMovedEvent: " << m_MouseX << ", " << m_MouseY;
+			ss << "MouseMovedEvent: " << _mouseX << ", " << _mouseY;
 			return ss.str();
 		}
 
-
+		//Setting up the virtual methods
 		EVENT_CLASS_TYPE(MouseMoved);
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
-		float m_MouseX, m_MouseY;
+		float _mouseX, _mouseY;
 	};
 
+	//Mouse scroll event. Activated when scroll wheel is activated
 	class GREENSKY_API MouseScrolledEvent : public Event {
 	public:
-		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
+		MouseScrolledEvent(float xOffset, float yOffset) : _xOffset(xOffset), _yOffset(yOffset) {}
 
-		inline float GetOffsetX() const { return m_XOffset; }
-		inline float GetOffsetY() const { return m_YOffset; }
+		//Getters
+		inline float GetOffsetX() const { return _xOffset; }
+		inline float GetOffsetY() const { return _yOffset; }
 
+		//Debug Information
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "MouseScrolledEvent: " << m_XOffset << ", " << m_YOffset;
+			ss << "MouseScrolledEvent: " << _xOffset << ", " << _yOffset;
 			return ss.str();
 		}
 
+		//Setting up the virtual methods
 		EVENT_CLASS_TYPE(MouseScrolled)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
-		float m_XOffset, m_YOffset;
+		//_xOffset. some mice have horizontal scrolling as well. Need to handle this in order to make sure there will be no crashes when dealing with one of these mice
+		float _xOffset, _yOffset;
 	};
 
+	//Mouse Button Event. Any event that involves a button on the mouse
 	class GREENSKY_API MouseButtonEvent : public Event {
 	public:
-		inline int GetMouseButton() const { return m_Button; }
+		inline int GetMouseButton() const { return _button; }
 
+		//Setting up the virtual method
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
-		MouseButtonEvent(int button) :m_Button(button) {}
+		MouseButtonEvent(int button) :_button(button) {}
 
-		int m_Button;
+		int _button;
 	};
 
+	//Mouse button pressed event, any time a button is clicked.
 	class GREENSKY_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
 			: MouseButtonEvent(button) {}
 
+		//Debug Information
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << m_Button;
+			ss << "MouseButtonPressedEvent: " << _button;
 			return ss.str();
 		}
 
+		//Setting up the virtual method
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
+	//Mouse Button relased event, anytime a mouse button is released.
 	class GREENSKY_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)
 			: MouseButtonEvent(button) {}
 
+		//Debug Information
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseButtonReleasedEvent: " << m_Button;
+			ss << "MouseButtonReleasedEvent: " << _button;
 			return ss.str();
 		}
 
+		//Setting up the virtual method
 		EVENT_CLASS_TYPE(MouseButtonReleased)
 	};
 }

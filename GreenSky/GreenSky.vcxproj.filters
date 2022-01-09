@@ -34,6 +34,7 @@
     <ClInclude Include="src\GreenSky\Log.h">
       <Filter>GreenSky</Filter>
     </ClInclude>
+    <ClInclude Include="src\gspch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GreenSky\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\GreenSky\Log.cpp">
       <Filter>GreenSky</Filter>
     </ClCompile>
+    <ClCompile Include="src\gspch.cpp" />
   </ItemGroup>
 </Project>

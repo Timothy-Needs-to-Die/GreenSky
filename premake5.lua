@@ -18,6 +18,10 @@ project "GreenSky"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 
+
+	pchheader "gspch.h"
+	pchsource "GreenSky/src/gspch.cpp"
+
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"

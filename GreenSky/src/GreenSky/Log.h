@@ -3,7 +3,8 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 #include "Core.h"
-#include <memory.h>
+
+#include "gspch.h"
 
 namespace GreenSky {
 	class GREENSKY_API Log
