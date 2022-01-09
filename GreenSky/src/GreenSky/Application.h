@@ -1,6 +1,8 @@
 #pragma once
 #include "Core.h"
 
+#include "Events/Event.h"
+
 namespace GreenSky {
 	class GREENSKY_API Application
 	{
