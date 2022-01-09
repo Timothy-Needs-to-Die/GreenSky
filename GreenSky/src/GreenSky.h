@@ -6,6 +6,7 @@
 
 #include "GreenSky/Application.h"
 #include "GreenSky/Core.h"
+#include "GreenSky/Log.h"
 
 //ENTRY POINT
 #include "GreenSky/EntryPoint.h"

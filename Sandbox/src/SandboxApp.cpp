@@ -9,9 +9,6 @@ public:
 	~Sandbox() {
 
 	}
-
-
-
 };
 
 GreenSky::Application* GreenSky::CreateApplication() {

@@ -1,0 +1,3 @@
+[submodule "GreenSky/vendor/spdlog"]
+	path = GreenSky/vendor/spdlog
+	url = https://github.com/gabime/spdlog
