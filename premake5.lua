@@ -29,7 +29,25 @@ project "GreenSky"
 
 	includedirs {
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/vendor/assimp/include",
+		"%{prj.name}/vendor/freetype",
+		"%{prj.name}/vendor/GLEW/include",
+		"%{prj.name}/vendor/GLFW/include",
+		"%{prj.name}/vendor/glm",
+		"%{prj.name}/vendor/irrklang/include",
+		"%{prj.name}/vendor/nlohmann"
+	}
+
+	libdirs {
+		"%{prj.name}/vendor/assimp/lib",
+		"%{prj.name}/vendor/GLEW/lib",
+		"%{prj.name}/vendor/GLFW/lib-vc2019",
+		"%{prj.name}/vendor/irrklang/lib",
+	}
+
+	links {
+		""
 	}
 
 	filter "system:windows"
