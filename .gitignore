@@ -19,6 +19,7 @@ mono_crash.*
 .vs/
 bin/
 bin-int/
+!vendor/bin/premake/premake5.exe
 *.user
 
 
