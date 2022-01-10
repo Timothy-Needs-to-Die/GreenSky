@@ -7,12 +7,19 @@
 #include "GreenSky/Events/ApplicationEvent.h"
 #include "GreenSky/Events/MouseEvent.h"
 
+#include "GLFW/glfw3.h"
+#include "GL/GL.h"
+
 namespace GreenSky {
 
 	//#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	GreenSky::Application::Application() : _running(true)
 	{
+		GLFWwindow* window = glfwCreateWindow(1280, 720, "Demo", nullptr, nullptr);
+		glfwMakeContextCurrent(window);
+		//glfwSetWindowUserPointer(window)
+
 	}
 
 	GreenSky::Application::~Application()
